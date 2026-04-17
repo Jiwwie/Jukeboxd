@@ -15,7 +15,6 @@ $mysqli = new mysqli(
     $_ENV['DB_USER']
 );
 
-
 ?>
 
 
