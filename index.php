@@ -15,9 +15,6 @@ $mysqli = new mysqli(
     $_ENV['DB_USER']
 );
 
-// Get all movies
-$result = $mysqli->query("SELECT * FROM movies");
-$movies = $result->fetch_all(MYSQLI_ASSOC);
 
 ?>
 
@@ -29,18 +26,12 @@ $movies = $result->fetch_all(MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/main.css" rel="stylesheet">
-    <title>Document</title>
+    <title>Jukeboxd - Home</title>
 </head>
 
 <body>
 
-    <?php
-
-    foreach ($movies as $movie) {
-        echo '<p>' . $movie['title'] . '</p>';
-    }
-
-    ?>
+    <h1>Jukeboxd</h1>
 
 </body>
 
