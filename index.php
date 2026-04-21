@@ -5,7 +5,7 @@ require_once 'vendor/_functions.php';
 $db = connectToDb();
 
 // Set page title and include top partial
-$title = "Home - Jukeboxd";
+$title = "Jukeboxd";
 include 'partials/top.php';
 
 // Redirect to home if already logged in

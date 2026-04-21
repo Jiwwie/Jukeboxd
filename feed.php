@@ -14,10 +14,10 @@ include 'partials/top.php';
 ?>
 
 <body>
-
-    <h1>Friend activity</h1>
-
-
+    <?php include 'partials/header.php'; ?>
+    <div class="container">
+        <h1>Friend activity</h1>
+    </div>
 </body>
 
 </html>

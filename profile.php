@@ -14,9 +14,11 @@ include 'partials/top.php';
 ?>
 
 <body>
-
-    <h1>Profile</h1>
-
+    <?php include 'partials/header.php'; ?>
+    <div class="container">
+        <h1>Profile</h1>
+        <a href="x_logout.php" class="btn">Log out</a>
+    </div>
 
 </body>
 

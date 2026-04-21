@@ -10,11 +10,11 @@ $passwordConfirm = $_POST["password_confirm"];
 
 // Check if passwords match and if the user already exists
 if ($password !== $passwordConfirm) {
-    redirectWithMessage("index.php", "Passwords do not match.", "register");
+    redirectWithMessage("signup.php", "Passwords do not match.", "register_error");
 }
 
 if (getUserByUsername($db, $username)) {
-    redirectWithMessage("index.php", "Username already exists.", "register");
+    redirectWithMessage("signup.php", "Username already exists.", "register_error");
 }
 
 // Save the new user to the database

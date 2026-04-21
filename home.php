@@ -14,6 +14,7 @@ include 'partials/top.php';
 ?>
 
 <body>
+    <?php include 'partials/header.php'; ?>
     <div class="container">
         <h1>Home</h1>
     </div>

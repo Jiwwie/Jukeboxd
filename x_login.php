@@ -13,13 +13,13 @@ $hashedPassword = $user["password"];
 
 // If user doesn't exist: go back to index.php and show error message
 if ( ! $user) {
-    redirectWithMessage("index.php", "Password or username incorrect", "login");
+    redirectWithMessage("login.php", "Password or username incorrect", "login_error");
     exit();
 }
 
 // If password is incorrect: go back to index.php and show error message
 if ( ! password_verify($password, $hashedPassword)) {
-    redirectWithMessage("index.php", "Password or username incorrect", "login");
+    redirectWithMessage("login.php", "Password or username incorrect", "login_error");
     exit();
 }
 
