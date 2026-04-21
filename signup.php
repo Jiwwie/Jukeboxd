@@ -11,7 +11,7 @@ include 'partials/top.php';
 ?>
 
 <body>
-    <div class="container">
+    <div class="signup_container">
         <h1>Sign up</h1>
         <form action="x_register.php" method="POST">
             <h2>Create account</h2>

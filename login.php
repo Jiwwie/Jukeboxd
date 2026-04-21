@@ -11,6 +11,7 @@ include 'partials/top.php';
 ?>
 
 <body>
+    <?php include 'partials/header.php'; ?>
     <div class="container">
         <h1>Log in</h1>
 

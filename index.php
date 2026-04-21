@@ -14,8 +14,8 @@ indexRedirect();
 ?>
 
 <body>
+    <?php include 'partials/header.php'; ?>
     <div class="container">
-        <h1>Jukeboxd</h1>
 
         <?php writeMessage('login'); ?>
         <a href="signup.php" class="btn">Create account</a>

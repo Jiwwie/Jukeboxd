@@ -10,21 +10,22 @@ body {
     font-family: Arial, sans-serif;
     background: #f4f4f4;
     color: #333;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 /* CONTAINER */
 .container {
     width: 90%;
     max-width: 900px;
-    margin: 20px auto;
+    margin: 10px auto;
 }
 
 /* HEADER / NAV */
 header {
     background: #222;
     color: white;
-    padding: 15px 0;
+    padding: 1px 0;
+    border-bottom: 2px solid #111;
 }
 
 header .container {
@@ -36,6 +37,7 @@ header .container {
 a {
     color: inherit;
     text-decoration: none;
+    transition: color 0.2s;
 }
 
 nav a {
@@ -43,21 +45,43 @@ nav a {
     font-size: 14px;
 }
 
+nav a:hover {
+    color: #ccc;
+}
+
 /* POSTS / CARDS */
 .card {
     background: white;
-    padding: 15px;
-    margin-bottom: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
     border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* SIGNUP CONTAINER */
+.signup_container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* TITLAR */
 h1 {
-    margin-bottom: 10px;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+header h1 {
+    margin-bottom: 0;
+    flex: 0;
 }
 
 h2 {
-    margin-bottom: 5px;
+    font-size: 18px;
+    margin-bottom: 15px;
 }
 
 /* BUTTONS */
@@ -65,11 +89,13 @@ button, .btn {
     background: #333;
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 10px 16px;
     cursor: pointer;
     border-radius: 4px;
     display: inline-block;
-    margin: 5px 5px 5px 0;
+    margin: 10px 10px 10px 0;
+    font-size: 14px;
+    transition: background 0.2s;
 }
 
 button:hover, .btn:hover {
@@ -77,11 +103,43 @@ button:hover, .btn:hover {
 }
 
 /* INPUTS */
-input, textarea {
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
     width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #333;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+input[type="submit"]:hover {
+    background: #555;
 }
 
 /* SMALL TEXT */
