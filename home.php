@@ -4,21 +4,19 @@
 require_once 'vendor/_functions.php';
 $db = connectToDb();
 
+// Check if user is logged in
+isLoggedIn();
+
 // Set page title and include top partial
 $title = "Home - Jukeboxd";
 include 'partials/top.php';
-
 
 ?>
 
 <body>
 
-    <h1>Jukeboxd</h1>
+    <h1>Home</h1>
 
-    <?php writeMessage('login'); ?>
-    <a href="signup.php">Create account</a>
-    <br>
-    <a href="login.php">Log in</a>
 
 </body>
 
