@@ -4,17 +4,20 @@
 require_once 'vendor/_functions.php';
 $db = connectToDb();
 
+// Check if user is logged in
+isLoggedIn();
+
 // Set page title and include top partial
-$title = "Sign up - Jukeboxd";
+$title = "Profile - Jukeboxd";
 include 'partials/top.php';
 
 ?>
 
 <body>
-    <div class="container">
-        <h1>Sign up</h1>
 
-    </div>
+    <h1>Profile</h1>
+
+
 </body>
 
 </html>

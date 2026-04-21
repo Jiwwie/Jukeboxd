@@ -14,6 +14,16 @@ include 'partials/top.php';
     <div class="container">
         <h1>Log in</h1>
 
+        <form action="x_login.php" method="post">
+            <?php writeMessage("login_error"); ?>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button class="btn">Log in</button>
+        </form>
+
+        <a href="signup.php" class="btn">Don't have an account? Sign up →</a>
+    </div> 
+
 
 </body>
 
