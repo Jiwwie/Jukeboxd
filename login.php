@@ -11,8 +11,8 @@ include 'partials/top.php';
 ?>
 
 <body>
-
-    <h1>Log in</h1>
+    <div class="container">
+        <h1>Log in</h1>
 
 
 </body>

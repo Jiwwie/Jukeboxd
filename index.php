@@ -14,14 +14,14 @@ indexRedirect();
 ?>
 
 <body>
+    <div class="container">
+        <h1>Jukeboxd</h1>
 
-    <h1>Jukeboxd</h1>
+        <?php writeMessage('login'); ?>
+        <a href="signup.php" class="btn">Create account</a>
+        <a href="login.php" class="btn">Log in</a>
 
-    <?php writeMessage('login'); ?>
-    <a href="signup.php">Create account</a>
-    <br>
-    <a href="login.php">Log in</a>
-
+    </div>
 </body>
 
 </html>
