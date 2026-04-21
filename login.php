@@ -5,18 +5,15 @@ require_once 'vendor/_functions.php';
 $db = connectToDb();
 
 // Set page title and include top partial
-$title = "Home - Jukeboxd";
+$title = "Log in - Jukeboxd";
 include 'partials/top.php';
 
 ?>
 
 <body>
 
-    <h1>Jukeboxd</h1>
+    <h1>Log in</h1>
 
-    <a href="signup.php">Create account</a>
-    <br>
-    <a href="login.php">Log in</a>
 
 </body>
 
