@@ -1,19 +1,8 @@
 <?php
 
-// Load installed packages
-require_once 'vendor/autoload.php';
-
-// Load secrets from the file .env
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
-// Connect to database
-$mysqli = new mysqli(
-    'ostrawebb.se', 
-    $_ENV['DB_USER'], 
-    $_ENV['DB_PASS'],
-    $_ENV['DB_USER']
-);
+// Load functions and connect to database
+require_once 'vendor/_functions.php';
+$mysqli = connectToDb();
 
 ?>
 
