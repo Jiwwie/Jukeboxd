@@ -8,6 +8,8 @@ $db = connectToDb();
 $title = "Home - Jukeboxd";
 include 'partials/top.php';
 
+// Redirect to home if already logged in
+indexRedirect();
 
 ?>
 
