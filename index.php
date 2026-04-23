@@ -1,7 +1,7 @@
 <?php
 
 // Load functions and connect to database
-require_once 'vendor/_functions.php';
+require_once '_functions.php';
 $db = connectToDb();
 
 // Set page title and include top partial

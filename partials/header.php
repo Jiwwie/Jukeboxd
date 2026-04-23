@@ -1,6 +1,6 @@
     <header>
         <div class="container">
-            <h1>Jukeboxd</h1>
+            <a href="home.php"><h1>Jukeboxd</h1></a>
             <nav>
                 <a href="home.php">Home</a>
                 <a href="feed.php">Feed</a>
