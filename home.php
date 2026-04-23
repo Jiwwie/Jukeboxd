@@ -1,5 +1,4 @@
 <?php
-
 // Load functions and connect to database
 require_once '_functions.php';
 $db = connectToDb();
