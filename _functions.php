@@ -65,5 +65,16 @@ function createUser($db, $username, $password) {
     $statement->execute();
 }
 //Post functions 
+function getConcertsByArtist($db, $artist_id) {
+    $statement = $db->prepare("SELECT id, name, date FROM jb_concerts WHERE artist_id = ?");
+    $statement->bind_param("i", $artist_id);
+    $statement->execute();
+    $result = $statement->get_result();
 
+    $concerts = [];
+    while ($row = $result->fetch_assoc()) {
+        $concerts[] = $row;
+    }
+    return $concerts;
+}
 //Other functions
