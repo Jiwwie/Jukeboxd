@@ -21,6 +21,10 @@ indexRedirect();
         <a href="signup.php" class="btn">Create account</a>
         <a href="login.php" class="btn">Log in</a>
 
+        <h2>Welcome to Jukeboxd!</h2>
+        <p>Jukeboxd lets you share your concert history with friends and discover the next performance you'll love!</p>
+        <p>Get started today by creating an account or logging in</p>
+
     </div>
 </body>
 
