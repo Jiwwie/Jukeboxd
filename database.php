@@ -16,9 +16,21 @@ include 'partials/top.php';
     <?php include 'partials/header.php'; ?>
     <div class="container">
         <h1>List of Artists</h1>
-        <a href="add_artist" class="btn">Don't see your artist? Add them!</a>
+        <a href="add_artist.php" class="btn">Don't see your artist? Add them!</a>
 
-        
+        <div class="grid">
+            <?php
+            // Fetch artists from database
+            $artists = $db->query("SELECT * FROM jb_artists order by name asc");
+
+            // Loop through artists and display them
+            while ($artist = $artists->fetch_assoc()) {
+                echo '<div class="artist_card">';
+                echo '<h2>' . htmlspecialchars($artist['name']) . '</h2>';
+                echo '</div>';  
+            }
+            ?>
+        </div>
         
     </div>
 

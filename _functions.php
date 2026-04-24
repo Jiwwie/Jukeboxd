@@ -64,6 +64,12 @@ function createUser($db, $username, $password) {
     $statement->bind_param("ss", $username, $hashedPassword);
     $statement->execute();
 }
+//db functions
+function saveArtist($db, $name, $image) {
+    $statement = $db->prepare("INSERT INTO jb_artists (name, image) VALUES (?, ?)");
+    $statement->bind_param('ss', $name, $image);
+    $statement->execute();
+}
 //Post functions 
 function getConcertsByArtist($db, $artist_id) {
     $statement = $db->prepare("SELECT id, name, date FROM jb_concerts WHERE artist_id = ?");
@@ -78,3 +84,14 @@ function getConcertsByArtist($db, $artist_id) {
     return $concerts;
 }
 //Other functions
+function uploadFile() {
+    $target_dir = "img/";
+    $safe_filename = preg_replace('/[^a-zA-Z0-9_\.-]/', '_', basename($_FILES["image"]["name"]));
+    $target_file = $target_dir . $safe_filename;
+
+    if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+        return $target_file;
+    }
+
+    return false;
+}
