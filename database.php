@@ -7,7 +7,7 @@ $db = connectToDb();
 isLoggedIn();
 
 // Set page title and include top partial
-$title = "Home - Jukeboxd";
+$title = "Artists - Jukeboxd";
 include 'partials/top.php';
 
 ?>
@@ -25,9 +25,11 @@ include 'partials/top.php';
 
             // Loop through artists and display them
             while ($artist = $artists->fetch_assoc()) {
-                echo '<div class="artist_card">';
-                echo '<h2>' . htmlspecialchars($artist['name']) . '</h2>';
-                echo '</div>';  
+                $image = htmlspecialchars($artist['image']);
+                $name = htmlspecialchars($artist['name']);
+                echo '<a href="#" class="artist_card" style="background-image: url(' . $image . ')">';
+                echo '<h2>' . $name . '</h2>';
+                echo '</a>';  
             }
             ?>
         </div>

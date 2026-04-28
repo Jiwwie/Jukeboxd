@@ -100,9 +100,6 @@ function uploadFile() {
     $safe_filename = preg_replace('/[^a-zA-Z0-9_\.-]/', '_', $name_without_ext) . "_" . time() . "." . $file_extension;
     $target_file = $target_dir . $safe_filename;
 
-    // Get file extension
-    $file_extension = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
-    
     // Validate file extension
     if (!in_array($file_extension, $allowed_extensions)) {
         return false;
