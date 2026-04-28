@@ -21,6 +21,7 @@ include 'partials/top.php';
             <p>Did you double check for your artist or band? Make sure you aren't adding a duplicates to the database</p>
             
             <input type="text" name="name" placeholder="Artist name">
+            <p><?php writeMessage("artist_error"); ?></p>
             <input type="file" name="image">
             <p><?php writeMessage("file_error"); ?></p>
             

@@ -65,6 +65,13 @@ function createUser($db, $username, $password) {
     $statement->execute();
 }
 //db functions
+function artistExists($db, $name) {
+    $statement = $db->prepare("SELECT id FROM jb_artists WHERE name = ?");
+    $statement->bind_param("s", $name);
+    $statement->execute();
+    $result = $statement->get_result();
+    return $result->num_rows > 0;
+}
 function saveArtist($db, $name, $image) {
     $statement = $db->prepare("INSERT INTO jb_artists (name, image) VALUES (?, ?)");
     $statement->bind_param('ss', $name, $image);
@@ -87,9 +94,24 @@ function getConcertsByArtist($db, $artist_id) {
 //Other functions
 function uploadFile() {
     $target_dir = "img/";
-    $safe_filename = preg_replace('/[^a-zA-Z0-9_\.-]/', '_', basename($_FILES["image"]["name"]));
+    $allowed_extensions = ['png', 'jpg', 'jpeg'];
+    $name_without_ext = pathinfo($_FILES["image"]["name"], PATHINFO_FILENAME);
+    $file_extension = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
+    $safe_filename = preg_replace('/[^a-zA-Z0-9_\.-]/', '_', $name_without_ext) . "_" . time() . "." . $file_extension;
     $target_file = $target_dir . $safe_filename;
 
+    // Get file extension
+    $file_extension = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
+    
+    // Validate file extension
+    if (!in_array($file_extension, $allowed_extensions)) {
+        return false;
+    }
+    // Validate file size (max 5MB)
+    if ($_FILES["image"]["size"] > 5 * 1024 * 1024) {
+        return false;
+    }
+    // Move the uploaded file to img folder
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
         return $target_file;
     }
