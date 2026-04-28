@@ -19,10 +19,10 @@ include 'partials/top.php';
         <form action="x_save_artist.php" method="post" class ="card" enctype="multipart/form-data">
             <h1>Add Artist</h1>
             <p>Did you double check for your artist or band? Make sure you aren't adding a duplicates to the database</p>
-            <?php writeMessage("error"); ?>  
-
+            
             <input type="text" name="name" placeholder="Artist name">
             <input type="file" name="image">
+            <p><?php writeMessage("file_error"); ?></p>
             
             <input type="submit" value="Add Artist">
         </form>

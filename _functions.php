@@ -69,6 +69,7 @@ function saveArtist($db, $name, $image) {
     $statement = $db->prepare("INSERT INTO jb_artists (name, image) VALUES (?, ?)");
     $statement->bind_param('ss', $name, $image);
     $statement->execute();
+
 }
 //Post functions 
 function getConcertsByArtist($db, $artist_id) {

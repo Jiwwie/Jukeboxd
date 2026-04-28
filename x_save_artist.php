@@ -5,23 +5,18 @@ $db = connectToDb();
 
 // Get values from form
 $name = $_POST["name"];
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
     $result = uploadFile();
     
     if ($result !== false) {
-        echo "File uploaded successfully! Path: " . $result;
-        // Now you can save $result to your database
+        $image = $result;
     } else {
-        echo "File upload failed!";
+        redirectWithMessage("add_artist.php", "No file attached", "file_error");
     }
 }
 
-$image = $result;
-
-//Insert artist into database
-$stmt = $db->prepare("INSERT INTO jb_artists (name, image) VALUES (?, ?)");
-$stmt->bind_param("ss", $name, $image);
-$stmt->execute();
+saveArtist($db, $name, $image);
 
 // Redirect to database page
 header("Location: database.php");
