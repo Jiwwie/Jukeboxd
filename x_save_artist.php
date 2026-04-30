@@ -11,6 +11,7 @@ if (artistExists($db, $name)) {
     redirectWithMessage("add_artist.php", "Uh oh! An artist with that name already exists. Contact an administrator if you're having trouble.", "artist_error");
 }
 
+// Check if file is uploaded and handle it
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
     $result = uploadFile();
     

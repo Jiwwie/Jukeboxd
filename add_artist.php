@@ -22,7 +22,7 @@ include 'partials/top.php';
             
             <input type="text" name="name" placeholder="Artist name">
             <p><?php writeMessage("artist_error"); ?></p>
-            <input type="file" name="image">
+            <input type="file" name="image" class="file-input">
             <p><?php writeMessage("file_error"); ?></p>
             
             <input type="submit" value="Add Artist">
