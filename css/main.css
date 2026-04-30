@@ -78,13 +78,14 @@ nav a:hover { color: #ccc; }
 }
 
 .artist_card h2 {
-    background: rgba(255, 255, 255, 1);
+    background: rgba(255, 255, 255, 0.9);
     color: rgb(0, 0, 0);
     padding: 5px;
     border-radius: 2px;
     margin-bottom: 0;
     max-width: 100%;
     word-wrap: break-word;
+    text-align: center;
 }
 
 .signup_container {
