@@ -74,7 +74,7 @@ function artistExists($db, $name) {
 }
 function concertExists($db, $artist_id, $venue, $city, $date) {
     $statement = $db->prepare("SELECT id FROM jb_concerts WHERE venue = ? AND city = ? AND date = ? AND artist_id = ?");
-    $statement->bind_param("isss", $artist_id, $venue, $city, $date);
+    $statement->bind_param("sssi", $venue, $city, $date, $artist_id);
     $statement->execute();
     $result = $statement->get_result();
     return $result->num_rows > 0;
