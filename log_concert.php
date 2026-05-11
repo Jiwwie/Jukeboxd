@@ -45,6 +45,11 @@ include 'partials/top.php';
             </div>
             
             <textarea name="review" placeholder="Write a review here..." rows="6"></textarea>
+
+            <label for="image-input">Upload images (up to 5):</label>
+            <input type="file" id="image-input" name="image[]" class="file-input" multiple accept="image/*" onchange="checkImageLimit(this)">
+            <div id="image-count" class="file-info"></div>
+
             <input type="submit" value="Log">
         </form>
         
@@ -58,6 +63,25 @@ include 'partials/top.php';
 </html>
 
 <script>
+    // Limit images to 5 and show count
+    function checkImageLimit(input) {
+        const maxFiles = 5;
+        const countDisplay = document.getElementById('image-count');
+        
+        if (input.files.length > maxFiles) {
+            alert(`You can only upload up to ${maxFiles} images. ${input.files.length} files selected.`);
+            input.value = '';
+            countDisplay.textContent = '';
+            return;
+        }
+        
+        if (input.files.length > 0) {
+            countDisplay.textContent = `${input.files.length} image${input.files.length !== 1 ? 's' : ''} selected`;
+        } else {
+            countDisplay.textContent = '';
+        }
+    }
+
     // Load all artists from DB into JS
     const allArtists = <?php
         $result = $db->query("SELECT id, name FROM jb_artists ORDER BY name ASC");

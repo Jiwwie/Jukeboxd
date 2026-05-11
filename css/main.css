@@ -8,6 +8,7 @@
 /* BASE */
 body {
     font-family: Arial, sans-serif;
+    font-size: 16px;
     background: #f4f4f4;
     color: #333;
     line-height: 1.6;
@@ -18,8 +19,10 @@ a {
     text-decoration: none;
 }
 
-h1 { font-size: 24px; margin-bottom: 15px; }
-h2 { font-size: 18px; margin-bottom: 15px; }
+h1 { font-size: 32px; margin-bottom: 15px; }
+h2 { font-size: 20px; margin-bottom: 15px; }
+h3 { font-size: 18px; margin-bottom: 12px; }
+p { font-size: 16px; margin-bottom: 10px; }
 
 /* LAYOUT */
 .container {
@@ -44,7 +47,7 @@ header .container {
 
 header h1 { margin-bottom: 0; }
 
-nav a { margin-left: 15px; font-size: 14px; }
+nav a { margin-left: 15px; font-size: 15px; }
 nav a:hover { color: #ccc; }
 
 /* CARDS */
@@ -107,7 +110,7 @@ input, textarea, select {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-family: inherit;
-    font-size: 14px;
+    font-size: 16px;
     background: white;
 }
 
@@ -131,7 +134,7 @@ input[type="file"]::file-selector-button {
     margin: 10px 5px 10px 0;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
     font-family: inherit;
 }
 
@@ -149,7 +152,7 @@ button, .btn, input[type="submit"] {
     margin: 10px 5px 10px 0;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
     display: inline-block;
 }
 
@@ -191,5 +194,44 @@ button:hover, .btn:hover, input[type="submit"]:hover {
     color: gold;
 }
 
+/* AUTOCOMPLETE SUGGESTIONS */
+#artist-suggestions {
+    list-style: none;
+    background: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: -8px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    width: calc(100% + 0px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#artist-suggestions li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    font-size: 16px;
+}
+
+#artist-suggestions li:last-child {
+    border-bottom: none;
+}
+
+#artist-suggestions li:hover {
+    background: #f5f5f5;
+}
+
 /* UTILITIES */
-.small { font-size: 12px; color: #777; }
+.small { font-size: 13px; color: #777; }
+
+.file-info {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}

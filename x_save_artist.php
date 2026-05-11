@@ -22,7 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['image'])) {
     }
 }
 
-saveArtist($db, $name, $image);
+// Save artist if name and image are set
+if (isset($image)) {
+    saveArtist($db, $name, $image);
+}
 
 // Redirect to database page
 header("Location: database.php");
