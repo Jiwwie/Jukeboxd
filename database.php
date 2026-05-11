@@ -27,7 +27,7 @@ include 'partials/top.php';
             while ($artist = $artists->fetch_assoc()) {
                 $image = htmlspecialchars($artist['image']);
                 $name = htmlspecialchars($artist['name']);
-                echo '<a href="#" class="artist_card" style="background-image: url(' . $image . ')">';
+                echo '<a href="show_concerts.php?artist_id=' . $artist['id'] . '" class="artist_card" style="background-image: url(' . $image . ')">';
                 echo '<h2>' . $name . '</h2>';
                 echo '</a>';  
             }

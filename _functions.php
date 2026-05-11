@@ -72,11 +72,22 @@ function artistExists($db, $name) {
     $result = $statement->get_result();
     return $result->num_rows > 0;
 }
+function concertExists($db, $artist_id, $venue, $city, $date) {
+    $statement = $db->prepare("SELECT id FROM jb_concerts WHERE venue = ? AND city = ? AND date = ? AND artist_id = ?");
+    $statement->bind_param("isss", $artist_id, $venue, $city, $date);
+    $statement->execute();
+    $result = $statement->get_result();
+    return $result->num_rows > 0;
+}
 function saveArtist($db, $name, $image) {
     $statement = $db->prepare("INSERT INTO jb_artists (name, image) VALUES (?, ?)");
     $statement->bind_param('ss', $name, $image);
     $statement->execute();
-
+}
+function saveConcert($db, $artist_id, $venue, $city, $date) {
+    $statement = $db->prepare("INSERT INTO jb_concerts (artist_id, venue, city, date) VALUES (?, ?, ?, ?)");
+    $statement->bind_param('isss', $artist_id, $venue, $city, $date);
+    $statement->execute();
 }
 //Post functions 
 function getConcertsByArtist($db, $artist_id) {
