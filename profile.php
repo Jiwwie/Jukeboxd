@@ -17,6 +17,7 @@ include 'partials/top.php';
     <?php include 'partials/header.php'; ?>
     <div class="container">
         <h1>Profile</h1>
+        <?php writeMessage("success"); ?>
         <a href="x_logout.php" class="btn">Log out</a>
     </div>
 

@@ -16,9 +16,9 @@ include 'partials/top.php';
     <?php include 'partials/header.php'; ?>
     <div class="container">
 
-        <form action="x_save_log.php" method="post" class ="card">
+        <form action="x_save_log.php" method="post" class="card" enctype="multipart/form-data">
             <h1>Log Concert</h1>
-            <?php writeMessage("empty"); ?>  
+            <?php writeMessage("empty"); ?>
 
             <!-- Artist searchable dropdown -->
             <input type="text" id="artist-search" placeholder="Search for an artist..." autocomplete="off">
@@ -43,19 +43,20 @@ include 'partials/top.php';
                 <label for="str1">★</label>
                 <p>Your rating:</p>
             </div>
-            
+
             <textarea name="review" placeholder="Write a review here..." rows="6"></textarea>
 
+            <!--
             <label for="image-input">Upload images (up to 5):</label>
             <input type="file" id="image-input" name="image[]" class="file-input" multiple accept="image/*" onchange="checkImageLimit(this)">
             <div id="image-count" class="file-info"></div>
-
+            -->
             <input type="submit" value="Log">
         </form>
-        
+
         <p>Does your artist or concert not exist in our database yet? Add it!</p>
         <a href="database.php" class="btn">To database →</a>
-        
+
     </div>
 
 </body>
@@ -63,18 +64,17 @@ include 'partials/top.php';
 </html>
 
 <script>
-    // Limit images to 5 and show count
     function checkImageLimit(input) {
         const maxFiles = 5;
         const countDisplay = document.getElementById('image-count');
-        
+
         if (input.files.length > maxFiles) {
             alert(`You can only upload up to ${maxFiles} images. ${input.files.length} files selected.`);
             input.value = '';
             countDisplay.textContent = '';
             return;
         }
-        
+
         if (input.files.length > 0) {
             countDisplay.textContent = `${input.files.length} image${input.files.length !== 1 ? 's' : ''} selected`;
         } else {
@@ -92,10 +92,10 @@ include 'partials/top.php';
         echo json_encode($artists);
     ?>;
 
-    const searchInput = document.getElementById('artist-search');
+    const searchInput     = document.getElementById('artist-search');
     const suggestionsList = document.getElementById('artist-suggestions');
-    const artistIdInput = document.getElementById('artist-id-input');
-    const concertSelect = document.getElementById('concert-select');
+    const artistIdInput   = document.getElementById('artist-id-input');
+    const concertSelect   = document.getElementById('concert-select');
 
     // Filter and show suggestions as user types
     searchInput.addEventListener('input', function () {
@@ -122,8 +122,7 @@ include 'partials/top.php';
         artistIdInput.value = artist.id;
         suggestionsList.innerHTML = '';
 
-        // Fetch concerts for this artist
-        fetch(`get_concerts.php?artist_id=${artist.id}`)
+        fetch(`x_get_concerts.php?artist_id=${artist.id}`)
             .then(res => res.json())
             .then(concerts => {
                 concertSelect.innerHTML = '<option value="">Select a concert</option>';
@@ -133,7 +132,8 @@ include 'partials/top.php';
                     concerts.forEach(c => {
                         const option = document.createElement('option');
                         option.value = c.id;
-                        option.textContent = `${c.name} — ${c.date}`;
+                        // Venue + Date format
+                        option.textContent = `${c.venue} — ${c.date}`;
                         concertSelect.appendChild(option);
                     });
                 }

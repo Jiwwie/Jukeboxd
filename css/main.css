@@ -296,6 +296,7 @@ input[type="submit"] {
   transition: var(--transition);
   margin-right: var(--spacing-lg);
   margin-bottom: var(--spacing-lg);
+  margin-top: var(--spacing-sm);
 }
 
 button:hover,
@@ -315,8 +316,10 @@ input[type="submit"]:active {
 /* Secondary button variant */
 .btn-secondary {
   background: var(--bg-light);
-  border: 1px solid var(--text-secondary);
   color: var(--text-secondary);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
 }
 
 .btn-secondary:hover {

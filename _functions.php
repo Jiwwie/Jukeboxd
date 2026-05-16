@@ -89,6 +89,12 @@ function saveConcert($db, $artist_id, $venue, $city, $date) {
     $statement->bind_param('isss', $artist_id, $venue, $city, $date);
     $statement->execute();
 }
+function saveReview($db, $user_id, $concert_id, $rating, $review) {
+    $statement = $db->prepare("INSERT INTO jb_reviews (user_id, concert_id, rating, review, created_at) VALUES (?, ?, ?, ?, NOW())");
+    $statement->bind_param("iiis", $user_id, $concert_id, $rating, $review);
+    $statement->execute();
+    return $db->insert_id;
+}
 //Post functions 
 function getConcertsByArtist($db, $artist_id) {
     $statement = $db->prepare("SELECT id, name, date FROM jb_concerts WHERE artist_id = ?");
