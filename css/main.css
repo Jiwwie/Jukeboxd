@@ -325,6 +325,22 @@ input[type="submit"]:active {
   color: var(--text-primary);
 }
 
+/* Text/subtle button variant */
+.btn-text {
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 0;
+  margin-right: var(--spacing-sm);
+  margin-bottom: 0;
+  border-bottom: 1px solid transparent;
+}
+
+.btn-text:hover {
+  color: var(--accent-light);
+  border-bottom-color: var(--accent-light);
+  transform: none;
+}
+
 /* ═══ STAR RATING ══════════════════════════════════════════════════════ */
 .rating {
   display: flex;
