@@ -57,6 +57,13 @@ function getUserByUsername($db, $username) {
         $user = $result->fetch_assoc();
         return $user;
     }
+function getUserProfile($db, $user_id) {
+    $stmt = $db->prepare("SELECT id, username, pfp FROM jb_users WHERE id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $profile_user = $stmt->get_result()->fetch_assoc();
+    return $profile_user;
+}
 function createUser($db, $username, $password) {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -94,6 +101,25 @@ function saveReview($db, $user_id, $concert_id, $rating, $review) {
     $statement->bind_param("iiis", $user_id, $concert_id, $rating, $review);
     $statement->execute();
     return $db->insert_id;
+}
+function getReviewsByUser($db, $user_id) {
+    $statement = $db->prepare(
+        "SELECT r.id, r.rating, r.review, r.created_at, c.venue, c.city, c.date, a.name AS artist_name
+         FROM jb_reviews r
+         JOIN jb_concerts c ON r.concert_id = c.id
+         JOIN jb_artists a ON c.artist_id = a.id
+         WHERE r.user_id = ?
+         ORDER BY r.created_at DESC"
+    );
+    $statement->bind_param("i", $user_id);
+    $statement->execute();
+    $result = $statement->get_result();
+
+    $reviews = [];
+    while ($row = $result->fetch_assoc()) {
+        $reviews[] = $row;
+    }
+    return $reviews;
 }
 //Post functions 
 function getConcertsByArtist($db, $artist_id) {
