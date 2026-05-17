@@ -24,6 +24,7 @@ if (!$profile_user) {
 // Set page title and include top partial
     $title = $profile_user['username'] . " - Jukeboxd";
     include 'partials/top.php';
+    
 ?>
 
 <body>
@@ -50,17 +51,29 @@ if (!$profile_user) {
         <h2>Concerts logged</h2>
         <?php if (count($reviews) > 0): ?>
             <div class="reviews-list">
-                <?php foreach ($reviews as $review): ?>
-                    <div class="review-card">
-                        <h3><?php echo $review['venue']; ?> - <?php echo date("F j, Y", strtotime($review['date'])); ?></h3>
-                        <p>Rating: <?php echo str_repeat("★", $review['rating']) . str_repeat("☆", 5 - $review['rating']); ?></p>
-                        <p><?php echo nl2br(htmlspecialchars($review['review'])); ?></p>
+            <?php foreach ($reviews as $r): 
+                $stars = str_repeat('<span class="star filled">★</span>', $r['rating']) . str_repeat('<span class="star">★</span>', 5 - $r['rating']);
+            ?>
+            <div class="review-card">
+                <div class="review-artist-img" style="background-image: url('<?php echo htmlspecialchars($r['artist_image'] ?? ''); ?>')"></div>
+                <div class="review-body">
+                    <div class="review-meta">
+                        <span class="review-artist"><?php echo htmlspecialchars($r['artist_name']); ?></span>
+                        <span class="review-venue"><?php echo htmlspecialchars($r['venue']); ?> · <?php echo htmlspecialchars($r['city']); ?></span>
+                        <span class="review-date"><?php echo date("F j, Y", strtotime($r['date'])); ?></span>
                     </div>
-                <?php endforeach; ?>
+                <div class="review-stars"><?php echo $stars; ?></div>
+                    <?php if (!empty($r['review'])): ?>
+                    <p class="review-text"><?php echo nl2br(htmlspecialchars($r['review'])); ?></p>
+                    <?php endif; ?>
+                </div>
+                </div>
+            <?php endforeach; ?>
             </div>
         <?php else: ?>
             <p>No concerts logged yet.</p>
         <?php endif; ?>
+
     </div>
 
 </body>

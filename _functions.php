@@ -135,7 +135,7 @@ function saveReview($db, $user_id, $concert_id, $rating, $review) {
 }
 function getReviewsByUser($db, $user_id) {
     $statement = $db->prepare(
-        "SELECT r.id, r.rating, r.review, r.created_at, c.venue, c.city, c.date, a.name AS artist_name
+        "SELECT r.id, r.rating, r.review, r.created_at, c.venue, c.city, c.date, a.name AS artist_name, a.image AS artist_image
          FROM jb_reviews r
          JOIN jb_concerts c ON r.concert_id = c.id
          JOIN jb_artists a ON c.artist_id = a.id
@@ -151,6 +151,20 @@ function getReviewsByUser($db, $user_id) {
         $reviews[] = $row;
     }
     return $reviews;
+}
+function feedReviews($db, $user_id) {
+    $statement = $db->prepare(
+        "SELECT r.id, r.rating, r.review, r.created_at, c.venue, c.city, c.date, a.name AS artist_name, u.username, u.id AS user_id, a.image AS artist_image
+         FROM jb_reviews r
+         JOIN jb_concerts c ON r.concert_id = c.id
+         JOIN jb_artists a ON c.artist_id = a.id
+         JOIN jb_users u ON r.user_id = u.id
+         WHERE r.user_id IN (SELECT following_id FROM jb_follows WHERE follower_id = ?)
+         ORDER BY r.created_at DESC"
+    );
+    $statement->bind_param("i", $user_id);
+    $statement->execute();
+    return $statement->get_result();
 }
 function getConcertsByArtist($db, $artist_id) {
     $statement = $db->prepare("SELECT id, name, date FROM jb_concerts WHERE artist_id = ?");

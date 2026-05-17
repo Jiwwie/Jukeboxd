@@ -158,6 +158,100 @@ main {
     margin-right: var(--spacing);
 }
 
+/* ═══ PROFILE ══════════════════════════════════════════════════════════ */
+.profile-info h1 {
+    margin-bottom: 4px;
+}
+
+.profile-stats {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing);
+}
+
+.profile-stats span {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.profile-stats strong {
+    color: var(--text-primary);
+    font-size: 16px;
+    display: block;
+}
+
+/* ═══ REVIEWS ══════════════════════════════════════════════════════════ */
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing);
+    margin-top: var(--spacing-lg);
+}
+
+.review-card {
+    display: flex;
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.review-card:hover {
+    border-color: var(--text-secondary);
+    box-shadow: 0 4px 16px var(--shadow);
+}
+
+.review-artist-img {
+    width: 90px;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--border);
+}
+
+.review-body {
+    padding: var(--spacing);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.review-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--spacing-sm);
+}
+
+.review-author {
+    font-weight: 700;
+    color: var(--accent-light);
+}
+
+.review-artist {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.review-venue, .review-date, .review-logged {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.review-date { margin-left: auto; }
+
+.review-stars .star { color: var(--border); }
+.review-stars .star.filled { color: var(--accent-light); }
+
+.review-text {
+    font-size: 14px;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.6;
+}
+
 /* ═══ HEADER & NAVIGATION ══════════════════════════════════════════════ */
 header {
   background: var(--secondary);
