@@ -22,7 +22,7 @@ if (!$profile_user) {
     }
     
 // Set page title and include top partial
-    $title = $profile_user['username'] . " - Jukeboxd";
+    $title = htmlspecialchars($profile_user['username']) . " - Jukeboxd";
     include 'partials/top.php';
     
 ?>

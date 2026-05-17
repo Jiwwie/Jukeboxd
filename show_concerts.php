@@ -7,8 +7,8 @@ $db = connectToDb();
 isLoggedIn();
 
 // Get artist ID from URL parameter
-$artist_id = $_GET['artist_id'];
-$artis_name = $db->query("SELECT name FROM jb_artists WHERE id = $artist_id")->fetch_assoc()['name'];
+$artist_id = (int)$_GET['artist_id'];
+$artis_name = htmlspecialchars($db->query("SELECT name FROM jb_artists WHERE id = $artist_id")->fetch_assoc()['name']);
 
 // Set page title and include top partial
 $title = "Concerts - Jukeboxd";

@@ -20,7 +20,7 @@ $reviews = feedReviews($db, $_SESSION['userId']);
         <div class="divider"></div>
         <h1>Home</h1>
 
-        <h2>Welcome <?php echo $_SESSION['username']; ?>!</h2>
+        <h2>Welcome <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
         <p>What do you want to do today?</p>
 
         <div class="home-actions">

@@ -10,8 +10,8 @@ isLoggedIn();
 $title = "Add Concert - Jukeboxd";
 include 'partials/top.php';
 
-$artist_name = $db->query("SELECT name FROM jb_artists WHERE id = " . $_GET['artist_id'])->fetch_assoc()['name'];
-$artist_id = $_GET['artist_id'];
+$artist_name = htmlspecialchars($db->query("SELECT name FROM jb_artists WHERE id = " . $_GET['artist_id'])->fetch_assoc()['name']);
+$artist_id = (int)$_GET['artist_id'];
 
 ?>
 
