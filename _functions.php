@@ -71,6 +71,37 @@ function createUser($db, $username, $password) {
     $statement->bind_param("ss", $username, $hashedPassword);
     $statement->execute();
 }
+function allUsers($db) {
+    $result = $db->query("SELECT id, username FROM jb_users ORDER BY id DESC");
+    $users = [];
+    while ($row = $result->fetch_assoc()) {
+        $users[] = $row;
+    }
+    return $users;
+}
+function getFollowing($db, $user_id) {
+    $statement = $db->prepare("SELECT following_id FROM jb_follows WHERE follower_id = ?");
+    $statement->bind_param("i", $user_id);
+    $statement->execute();
+    $result = $statement->get_result();
+
+    $following = [];
+    while ($row = $result->fetch_assoc()) {
+        $following[] = $row['following_id'];
+    }
+    return $following;
+}
+function follow($db, $follower_id, $following_id) {
+    $stmt = $db->prepare("INSERT IGNORE INTO jb_follows (follower_id, following_id) VALUES (?, ?)");
+    $stmt->bind_param("ii", $follower_id, $following_id);
+    $stmt->execute();
+}
+
+function unfollow($db, $follower_id, $following_id) {
+    $stmt = $db->prepare("DELETE FROM jb_follows WHERE follower_id = ? AND following_id = ?");
+    $stmt->bind_param("ii", $follower_id, $following_id);
+    $stmt->execute();
+}
 //db functions
 function artistExists($db, $name) {
     $statement = $db->prepare("SELECT id FROM jb_artists WHERE name = ?");
@@ -121,7 +152,6 @@ function getReviewsByUser($db, $user_id) {
     }
     return $reviews;
 }
-//Post functions 
 function getConcertsByArtist($db, $artist_id) {
     $statement = $db->prepare("SELECT id, name, date FROM jb_concerts WHERE artist_id = ?");
     $statement->bind_param("i", $artist_id);
@@ -134,6 +164,7 @@ function getConcertsByArtist($db, $artist_id) {
     }
     return $concerts;
 }
+
 //Other functions
 function uploadFile() {
     $target_dir = "img/";

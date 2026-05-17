@@ -105,6 +105,59 @@ main {
   margin-top: var(--spacing-lg);
 }
 
+/* ═══ USER LIST ════════════════════════════════════════════════════════ */
+.user-list {
+  list-style: none;
+  margin-top: var(--spacing-lg);
+}
+
+.user-list-item {
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-list-item:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.user-list-item a {
+  display: block;
+  padding: var(--spacing) var(--spacing-sm);
+  color: var(--text-secondary);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.user-list-item:hover {
+  background: var(--bg-light);
+}
+
+.user-list-item:hover a {
+  color: var(--text-primary);
+  padding-left: var(--spacing);
+}
+
+.user-list-item .btn,
+.user-list-item .btn-secondary {
+    margin: 0;
+    padding: 6px 16px;
+    font-size: 13px;
+}
+
+.user-list-item .btn {
+    background: var(--accent);
+    color: var(--text-primary);
+    margin-right: var(--spacing);
+}
+.user-list-item .btn-secondary {
+    background: var(--bg-light);
+    color: var(--text-secondary);
+    margin-right: var(--spacing);
+}
+
 /* ═══ HEADER & NAVIGATION ══════════════════════════════════════════════ */
 header {
   background: var(--secondary);

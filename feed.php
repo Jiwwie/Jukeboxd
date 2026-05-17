@@ -17,6 +17,8 @@ include 'partials/top.php';
     <?php include 'partials/header.php'; ?>
     <div class="container">
         <h1>Friend activity</h1>
+        <p>Follow more users to fill your feed!</p>
+        <a href="users.php" class="btn">All users →</a>
     </div>
 </body>
 
