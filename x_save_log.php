@@ -5,8 +5,8 @@ $db = connectToDb();
 // Must be logged in
 isLoggedIn();
 
-$concert_id = $_POST['concert_id'];
-$rating     = $_POST['rating'];
+$concert_id = $_POST['concert_id'] ?? '';
+$rating     = $_POST['rating'] ?? '';
 $review     = $_POST['review'] ?? '';
 $user_id    = $_SESSION['userId'];
 
@@ -20,6 +20,10 @@ if ($rating < 1 || $rating > 5) {
 if (strlen($review) > 1000) {
     redirectWithMessage("log_concert.php", "Review is too long. Maximum 1000 characters.", "empty");
 }
+if (reviewExists($db, $user_id, $concert_id)) {
+    redirectWithMessage("log_concert.php", "You've already logged this concert.", "empty");
+}
+
 
 // Save the review
 saveReview($db, $user_id, $concert_id, $rating, $review);

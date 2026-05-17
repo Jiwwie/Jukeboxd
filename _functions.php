@@ -117,6 +117,12 @@ function concertExists($db, $artist_id, $venue, $city, $date) {
     $result = $statement->get_result();
     return $result->num_rows > 0;
 }
+function reviewExists($db, $user_id, $concert_id) {
+    $stmt = $db->prepare("SELECT id FROM jb_reviews WHERE user_id = ? AND concert_id = ?");
+    $stmt->bind_param("ii", $user_id, $concert_id);
+    $stmt->execute();
+    return $stmt->get_result()->num_rows > 0;
+}
 function saveArtist($db, $name, $image) {
     $statement = $db->prepare("INSERT INTO jb_artists (name, image) VALUES (?, ?)");
     $statement->bind_param('ss', $name, $image);
@@ -160,7 +166,8 @@ function feedReviews($db, $user_id) {
          JOIN jb_artists a ON c.artist_id = a.id
          JOIN jb_users u ON r.user_id = u.id
          WHERE r.user_id IN (SELECT following_id FROM jb_follows WHERE follower_id = ?)
-         ORDER BY r.created_at DESC"
+         ORDER BY r.created_at DESC
+         LIMIT 20"
     );
     $statement->bind_param("i", $user_id);
     $statement->execute();
@@ -193,7 +200,7 @@ function uploadFile() {
         return false;
     }
     // Validate file size (max 5MB)
-    if ($_FILES["image"]["size"] > 5 * 1024 * 1024) {
+    if ($_FILES["image"]["size"] > 5 * 800 * 800) {
         return false;
     }
     // Move the uploaded file to img folder

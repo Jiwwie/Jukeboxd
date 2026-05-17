@@ -29,16 +29,27 @@ if (!$profile_user) {
 
 <body>
     <?php include 'partials/header.php'; ?>
+    <div class="divider"></div>
     <div class="container">
-        <h1><?php echo $profile_user['username']; ?>'s profile</h1>
         <?php writeMessage("success"); ?>
+        <?php writeMessage("error"); ?>
         
         <div class="profile-info">
-            <img src="<?php echo $profile_user['pfp'] ? $profile_user['pfp'] : 'img/default-pfp.png'; ?>" alt="Profile Picture" class="profile-pic">
             
+            <img src="<?php echo $profile_user['pfp'] ? htmlspecialchars($profile_user['pfp']) : 'img/default-pfp.png'; ?>" alt="Profile Picture" class="profile-pic">
+
+        <div>
+            <h1><?php echo htmlspecialchars($profile_user['username']); ?></h1>
+            <?php if ($is_own_profile): ?>
+                <form action="x_save_profile.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="image" accept="image/*" onchange="this.form.submit()">
+                </form>
+            <?php endif; ?>
+        </div>
+
             <div class="profile-stats">
                 <p>Concerts logged: <?php echo count($reviews); ?></p>
-                <!-- Future stats like favorite artist, average rating, etc. can go here -->
+                <!-- Room for future stats (fav artist, average rating etc) -->
             </div>
         </div>
 

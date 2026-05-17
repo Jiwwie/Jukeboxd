@@ -99,6 +99,12 @@ small, .small {
   padding: 0 var(--spacing);
 }
 
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: var(--spacing-lg) 0;
+}
+
 main {
   min-height: calc(100vh - 60px);
   padding: var(--spacing-lg) 0;
@@ -163,6 +169,14 @@ main {
     margin-bottom: 4px;
 }
 
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
 .profile-stats {
     display: flex;
     gap: var(--spacing-lg);
@@ -195,6 +209,10 @@ main {
     border-radius: var(--radius-md);
     overflow: hidden;
     transition: var(--transition);
+}
+
+.review-card:last-child {
+    margin-bottom: var(--spacing-lg);
 }
 
 .review-card:hover {
@@ -295,6 +313,21 @@ nav a.active {
   border-bottom-color: var(--accent);
 }
 
+nav a.nav-cta {
+    color: var(--accent-light);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-sm);
+    padding: 4px 12px;
+    display: flex;
+    align-items: center;
+}
+
+nav a.nav-cta:hover {
+    background: var(--accent);
+    color: var(--text-primary);
+    border-bottom-color: transparent;
+}
+
 /* ═══ CARDS - STANDARD ═════════════════════════════════════════════════ */
 .card {
   background: var(--bg-light);
@@ -309,6 +342,37 @@ nav a.active {
 .card:hover {
   border-color: var(--text-secondary);
   box-shadow: 0 8px 24px var(--shadow);
+}
+
+/* ═══ HOME ═════════════════════════════════════════════════════════════ */
+.home-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--spacing);
+    margin-top: var(--spacing-lg);
+}
+
+.home-btn {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg) var(--spacing);
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.home-btn:first-child {
+    border-color: var(--accent);
+    color: var(--accent-light);
+}
+
+.home-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent-light);
+    box-shadow: 0 4px 16px var(--shadow);
 }
 
 /* ═══ CARDS - ARTIST/CONCERT ═══════════════════════════════════════════ */
