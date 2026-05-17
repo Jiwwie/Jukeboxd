@@ -30,7 +30,7 @@ include 'partials/top.php';
                 $venue = htmlspecialchars($concert['venue']);
                 $city = htmlspecialchars($concert['city']);
                 $date = htmlspecialchars($concert['date']);
-                echo '<div class="concert_card">';
+                echo '<div class="concert-card">';
                 echo '<h2>' . $venue . ' - ' . $city . '</h2>';
                 echo '<p>' . date("F j, Y", strtotime($date)) . '</p>';
                 echo '</div>';  

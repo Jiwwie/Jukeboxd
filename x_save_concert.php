@@ -23,4 +23,4 @@ if (concertExists($db, $artist_id, $venue, $city, $date)) {
 saveConcert($db, $artist_id, $venue, $city, $date);
 
 // Redirect to database page
-header("Location: database.php");
+header("Location: show_concerts.php?artist_id=" . $artist_id);

@@ -362,6 +362,32 @@ nav a.active {
   box-shadow: 0 12px 24px var(--shadow);
 }
 
+.concert-card {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing);
+    transition: var(--transition);
+}
+
+.concert-card:hover {
+    border-color: var(--text-secondary);
+    box-shadow: 0 4px 16px var(--shadow);
+}
+
+.concert-card h2 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.concert-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
 /* ═══ FORMS - INPUTS & TEXTAREAS ═══════════════════════════════════════ */
 input[type="text"],
 input[type="email"],
