@@ -185,6 +185,46 @@ function getConcertsByArtist($db, $artist_id) {
     }
     return $concerts;
 }
+function getReviewsByArtist($db, $artist_id) {
+    $statement = $db->prepare(
+        "SELECT 
+            r.id,
+            r.rating,
+            r.review,
+            r.created_at,
+
+            c.venue,
+            c.city,
+            c.date,
+
+            u.id AS user_id,
+            u.username,
+
+            a.image AS artist_image
+
+         FROM jb_reviews r
+
+         JOIN jb_concerts c ON r.concert_id = c.id
+         JOIN jb_users u ON r.user_id = u.id
+         JOIN jb_artists a ON c.artist_id = a.id
+
+         WHERE c.artist_id = ?
+
+         ORDER BY r.created_at DESC
+         
+         LIMIT 10"
+    );
+    $statement->bind_param("i", $artist_id);
+    $statement->execute();
+    $result = $statement->get_result();
+
+    $reviews = [];
+    while ($row = $result->fetch_assoc()) {
+        $reviews[] = $row;
+    }
+
+    return $reviews;
+}
 
 //Other functions
 function uploadFile() {

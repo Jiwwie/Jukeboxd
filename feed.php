@@ -22,10 +22,7 @@ $reviews = feedReviews($db, $_SESSION['userId']);
         <p>Follow more users to fill your feed!</p>
         <a href="users.php" class="btn">All users →</a>
 
-<?php if ($reviews->num_rows === 0): ?>
-    <p>No activity yet — follow some users to fill your feed!</p>
-    <a href="users.php" class="btn">All users →</a>
-    <?php else: ?>
+
         <div class="reviews-list">
             <?php while ($r = $reviews->fetch_assoc()):
                 $stars = str_repeat('<span class="star filled">★</span>', $r['rating']) . str_repeat('<span class="star">★</span>', 5 - $r['rating']);
@@ -46,7 +43,6 @@ $reviews = feedReviews($db, $_SESSION['userId']);
             </div>
             <?php endwhile; ?>
         </div>
-    <?php endif; ?>
 
     </div>
 </body>
